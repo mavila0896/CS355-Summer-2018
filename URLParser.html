@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,
+    th,
+    td {
+        padding: 5px;
+        border: 1px solid white;
+        
+    }
+</style>
+
+<head>
+    <title>
+        The TARDIS URL Parser
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/3/w3.css">
+</head>
+
+<body background="sherlockwallpaper.png">
+    <div class="form-wrapper">
+        <form id="form" enctype="multipart/form-data" method="post" action="/url-parser.html">
+            <fieldset>
+                <div class="Title">
+                    <span class="option"><font color="white">Enter a URL in the TARDIS Module</font></span>
+                </div>
+                <input type="text" id="inputString" name="inputString" style="height:18px;" />
+                <div class="buttons">
+                    <button class="btn primary" id="parseButton" onclick="return false;">Parse URL</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.18.1/URI.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#parseButton').click(parser.parse);
+        });
+
+        var parser = {
+            parse: function() {
+
+                var s = $("#inputString").val();
+                var uri = new URI(s).duplicateQueryParameters(true);
+
+                $("#scheme").text(uri.scheme());
+                $("#protocol").text(uri.protocol());
+                $("#hostname").text(uri.hostname());
+
+                if (uri.directory()) {
+                    $("#directory").text(uri.directory());
+                    $("#directory").parent().show();
+                } else {
+                    $("#directory").parent().hide();
+                }
+
+                if (uri.resource()) {
+                    $("#resource").text(uri.resource());
+                    $("#resource").parent().show();
+                } else {
+                    $("#resource").parent().hide();
+                }
+
+                if (uri.host()) {
+                    $("#host").text(uri.host());
+                    $("#host").parent().show();
+                } else {
+                    $("#host").parent().hide();
+                }
+
+                if (uri.port()) {
+                    $("#port").text(uri.port());
+                    $("#port").parent().show();
+                } else {
+                    $("#port").parent().hide();
+                }
+
+                if (uri.subdomain()) {
+                    $("#subdomain").text(uri.subdomain());
+                    $("#subdomain").parent().show();
+                } else {
+                    $("#subdomain").parent().hide();
+                }
+
+                if (uri.domain()) {
+                    $("#domain").text(uri.domain());
+                    $("#domain").parent().show();
+                } else {
+                    $("#domain").parent().hide();
+                }
+
+                if (uri.tld()) {
+                    $("#tld").text(uri.tld());
+                    $("#tld").parent().show();
+                } else {
+                    $("#tld").parent().hide();
+                }
+
+                if (uri.path()) {
+                    $("#path").text(uri.path());
+                    $("#path").parent().show();
+                } else {
+                    $("#path").parent().hide();
+                }
+
+                var content = "";
+                $.each(uri.query(true), function(i, n) {
+
+                    if ($.isArray(n)) {
+                        var key = $('<div/>').text(i).html();
+                        for (var j = 0; j < n.length; j++) {
+                            var value = $('<div/>').text(n[j]).html();
+                            content += '<tr><td class="p"><span class="sp">\'' + key + '\'[' + j + ']:<span></td><td class="v">' + value + '</td></tr>';
+                        }
+
+                    } else {
+                        var key = $('<div/>').text(i).html();
+                        var value = $('<div/>').text(n).html();
+                        content += '<tr><td class="p"><span class="sp">\'' + key + '\':<span></td><td class="v">' + value + '</td></tr>';
+                    }
+                });
+
+                $("#queryString").html(content);
+
+                if (content != "") {
+                    $("#queryStringWrapper").show();
+                } else {
+                    $("#queryStringWrapper").hide();
+                }
+
+                $("#result").show();
+            }
+        };
+    </script>
+
+    <div id="result" style="display:none;">
+        <font color="white">
+            <h2>The URL Parse Information</h2>
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <th>Entry</th>
+                </tr>
+                <tr>
+                    <td class="t">Protocol:</td>
+                    <td id="protocol" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Port:</td>
+                    <td id="port" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Full address:</td>
+                    <td id="host" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Top-level domain:</td>
+                    <td id="tld" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Domain:</td>
+                    <td id="domain" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Subdomain:</td>
+                    <td id="subdomain" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">Path:</td>
+                    <td id="path" class="v"></td>
+                </tr>
+                <tr>
+                    <td class="t">IP Address:</td>
+                    <td id="ipadd" class="v"></td>
+                </tr>
+            </table>
+            <div id="queryStringWrapper">
+                <h2>Parameter Values</h2>
+                <table id="queryString">
+                </table>
+            </div>
+        </font>
+    </div>
+
+    <?php
+    $website = "";
+        if (empty($_POST["website"])) {
+            $website = "";
+        } else {
+            $website = test_input($_POST["website"]);
+    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL"; 
+        }
+    }
+    ?>
+</body>
+
+</html>

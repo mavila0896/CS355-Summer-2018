@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        td,
+        th {
+            border: 1.3px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        div.a {
+            text-indent: 70px;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/3/w3.css">
+    <link rel="stylesheet" type="text/css" href="LectureNotes.css">
+    <title>CSCI 355 Lecture Notes for July 5th, 2018 by Mark A Avila</title>
+</head>
+
+<body>
+    <header>
+        <div id="header-course">Internet and Web Technologies</div>
+        <div id="header-date">Lecture of July 5th, 2018</div>
+        <div id="header-author">Notes by Mark A Avila</div>
+    </header>
+    <div id="toc-container">
+        <p class="toc-title">Contents</p>
+        <ul class="toc-list">
+            <li>
+                <a href="#topic-1">Announcements</a>
+                <ul>
+                    <li><a href="#topic-1-1">Zybook and scope of the class!</a></li>
+                    <li><a href="#topic-1-2">Zybook and Grading Criteria</a></li>
+                    <li><a href="#topic-1-3">Venus account and the Website hosting</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#topic-2">Internet Applications and Network Programming</a>
+                <ul>
+                    <li><a href="#topic-2-1">I. Internet Service</a></li>
+                    <li><a href="#topic-2-2">II. Two Basic Internet Communication Paradigms</a></li>
+                    <li><a href="#topic-2-3">III. Stream Transport Paradigm</a></li>
+                    <li><a href="#topic-2-4">IV. Message Transport Paradigm</a></li>
+                    <li><a href="#topic-2-5">V. What will it be: Stream or Message?</a></li>
+                    <li><a href="#topic-2-6">VI. Connection-Oriented Communication</a></li>
+                    <li><a href="#topic-2-7">VII. Client-Server Model</a></li>
+                    <li><a href="#topic-2-8">VIII. Client Software vs Server Software</a></li>
+                    <li><a href="#topic-2-9">IX. Multiple Clients and Multiple Servers</a></li>
+                    <li><a href="#topic-2-10">X. Server Identification</a></li>
+                    <li><a href="#topic-2-11">XI. Client and Server Steps</a></li>
+                    <li><a href="#topic-2-12">XII. Peer-To-Peer Architecture (P2P)</a></li>
+                    <li><a href="#topic-2-13">XIII. Connecting and Submitting your index.html</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="topic" id="topic-1" style="font-size: 30px">
+        Announcements
+    </h1>
+    <h2 class="subtopic" id="topic-1-1" style="font-size:22px">
+        <u>Zybook and scope of the class!</u>
+    </h2>
+    <p style="font-size:16px">
+        In class we discussed the scope of the course from Zybooks and the client. The scope fo the class os the in-class lectures, the Zybook (which is important, facilitates assignments, learning defined in class and the assignments).
+    </p>
+    <h2 class="subtopic" id="topic-1-2" style="font-size:22px">
+        <u>Zybook and Grading Criteria</u>
+    </h2>
+    <p style="font-size:16px">
+        Zybook has a great technique of teaching you guys about the course and what are going to be covered. I know we won't be able to go over all chapter 1-13 on Zybooks, but you have an idea on what the course is mainly about and you have it until December/January. On The Zybooks, you see Participation Activity,you have to do all 13 chapters tat contains the Participation Activity so you can be credited for the work.
+    </p>
+    <p style="font-size:16px">
+        PSA: You have to do all of them before the end of the semester. If you do all 13 chapters, you will get 3% extra credit on the acitivties. But pace yourself. Don't do all of them at the before finals. I won't check then daily/weekly/hourly, but you should be prepared for the topics that we will be learning before coming to class. If you got any questions from Zybooks, you can email me at <a href="mailto:lawrence.teitelman@qc.cuny.edu">Lawrence Teitelman</a>, or ask me before class, or during class.
+    </p>
+    <h3 class="subtopic" id="topic-1-3" style="font-size:22px">
+        <u>Venus account and the Website hosting</u>
+    </h3>
+    <p style="font-size:16px">
+        In the follwing week(s) of the summer course, you will be able to create your own webpage using venus and the SSH Client. In order for us to do this we will have to do the follwing steps...
+    </p>
+    <p style="font-size:16px">
+        1. If you have a Venus account, the username and password shoudl follow the following critera:
+    </p>
+    <div class="a">
+        <p class="text-indent: 50" style="font-size:16px">
+            username: 2 first letters of first name + 2 first letters of last name + last 4 digits of CUNYID (e.g If your name is John Marks and your CUNYID is 01234567; then the username should be joma4567)
+        </p>
+        <p style="font-size:16px">
+            password: CUNYID (e.g 01234567)
+        </p>
+    </div>
+    <p style="font-size:16px">
+        2. Download the SSH Shell client from the <a href="http://smartty.sysprogs.com/">SMARTTY</a> website
+    </p>
+    <p style="font-size:16px">
+        3. Once you downloaded the client, it will ask for your host name, username, and password:
+    </p>
+    <div class="a">
+        <p style="font-size:16px">
+            Host name: venus.cs.qc.cuny.edu
+        </p>
+        <p style="font-size:16px">
+            username: joma4567
+        </p>
+        <p style="font-size:16px">
+            password: 01234567
+        </p>
+    </div>
+    <p style="font-size:16px">
+        4. Once thats done, you will only need to submit your index.html, which is your homepage. Submitting it will ask you to create a link: https://venus.cs.qc.cuny.edu/~[yourname]/cs355 &lt;--ONLY (Optional) if you want to have a directory
+    </p>
+    <h1 class="topic" id="topic-1" style="font-size: 30px">
+        Internet Applications and Network Programming
+    </h1>
+
+    <h1 class="topic" id="topic-2-1" style="font-size:22px">
+        <u>Topic 1: Internet Services</u>
+    </h1>
+    <ul style="font-size:16px">
+        <li>The Internet offers diverse services such as web browsing, text messaging, and video streaming
+        </li>
+        <li>None of these services are part of the underlying communications infrastructure of the Internet
+        </li>
+        <li>The Internet provides a general communications mechanism on which all services are built on.
+        </li>
+        <li>Individual services are supplied by application programs that run on computers attached to the Internet.
+        </li>
+        <li>It's possible to devise new services without changing the Internet.
+        </li>
+    </ul>
+
+    <h1 class="topic" id="topic-2-2" style="font-size:22px">
+        <u>Topic 2: Two Basic Internet Communication Paradigm</u>
+    </h1>
+    <table>
+        <tr>
+            <th>Stream Paradigm</th>
+            <th>Message Paradigm</th>
+        </tr>
+        <tr>
+            <td>Connected-oriented</td>
+            <td>Connectionless</td>
+        </tr>
+        <tr>
+            <td>1-to-1 communication</td>
+            <td>Communication may involve many other parties</td>
+        </tr>
+        <tr>
+            <td>Send sequences of individual bytes</td>
+            <td>Send sequences of discrete messages</td>
+        </tr>
+        <tr>
+            <td>Arbitrary length transfer</td>
+            <td>Each message limited to 64 KB</td>
+        </tr>
+        <tr>
+            <td>Used by most applications</td>
+            <td>Used for multimedia applications</td>
+        </tr>
+        <tr>
+            <td>Runs over “Transmission Control Protocol” (TCP)</td>
+            <td>Runs over “User Datagram Protocol” (UDP)</td>
+        </tr>
+    </table>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-3"><u>Topic 3: Stream Transport Paradigm</u></h2>
+    <ul style="font-size:16px">
+        <li>A sequence of bytes flows from one application to another
+        </li>
+        <li>Internet arranges for two streams between a pair of communicating applications, one in each direction.
+        </li>
+        <li>The browser uses the stream service to communicate with a web server
+        </li>
+        <li>The browser sends a request, then the web server responds by sending a response.
+        </li>
+        <li>The Internet accepts data flowing from each of the 2 applications, then delivers the data to the other application
+        </li>
+    </ul>
+    <ul style="font-size:16px">
+        <li>The stream is sent without attaching meaning to the bytes and without inserting boundaries
+        </li>
+        <li>The sending application can send one byte at a time, or can generate large blocks of bytes
+        </li>
+        <li>TThe stream service moves bytes across the Internet and delivers them as they arrive
+        </li>
+        <li>Smaller chunks of bytes might be combined into a large block, or a large block might be divided into smaller chunks
+        </li>
+    </ul>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-4"><u>Topic 4: Message Transport Paradigm</u></h2>
+    <ul style="font-size:16px">
+        <li>The network accepts and delivers messages.
+        </li>
+        <li>Each message delivered to a receiver corresponds to a message transmitted by a sender.
+        </li>
+        <li>If there are K bytes in an outgoing (sent) message, then there are K bytes in an incoming (received) message.
+        </li>
+        <li>The message may be sent directly to another computer, then the message may also be broadcast to all computers on a network.
+        </li>
+        <li>Many computers may send messages to a single recipient application. Therefore, the message paradigm can be 1-to-1, 1-to-many, or many-to-1.
+        </li>
+    </ul>
+    <p style="font-size:16px"> It doesn't make any guarantees about whether a message will arrive/the order in which messages are delivered. Messages may be: </p>
+    <ul style="font-size:16px">
+        <li>Lost (never delivered)
+        </li>
+        <li>Duplicated (more than one copy arrives)
+        </li>
+        <li>Delayed (some packets may take a long time to arrive)
+        </li>
+        <li>Delivered out of order
+        </li>
+    </ul>
+    <p style="font-size:16px"> An application programmer choosing the message paradigm must ensure that the application operates correctly, even if packets are lost or reordered.</p>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-5"><u>Topic 5: What will it be: Stream or Message?</u></h2>
+    <p style="font-size: 16px"> Because The Message Paradigm requires this expertise in design of protocols - to handle lost, duplicated, delayed or reordered - less than 5% of packets in the Internet uses the Message Paradigm. Exceptions might include:
+    </p>
+    <ul style="font-size:16px">
+        <li>Situations where broadcast is needed
+        </li>
+        <li>Where a receiver must play the data as it is received - audio phone call
+        </li>
+    </ul>
+    <p style="font-size:16px">Our focus will therefore be on Stream Paradigm</p>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-6"><u>Topic 6: Connection-Oriented Communication</u></h2>
+    <ul style="font-size:16px">
+        <li>CREATE CONNECTION: Before the 2 applications can communicate, they must request that a connection is to be created between them
+        </li>
+        <li>EXCHANGE DATA: Once the connection is established, data can be sent in either direction
+        </li>
+        <li>CLOSE CONNECTION: When the data transmission (sending and receiving) is done, the connection can be terminated.
+        </li>
+    </ul>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-7"><u>Topic 7: The Client Server Model</u></h2>
+    <p style="font-size:16px"> In this image below, we got a server connected to the internet for the clients such as a computer, mobile device and a laptop.</p>
+    <br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg" alt="wikipedia.org" style="width:500px; height:343px;">
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Server Application</th>
+            <th>Client Application</th>
+        </tr>
+        <tr>
+            <td>Start first</td>
+            <td>Start second</td>
+        </tr>
+        <tr>
+            <td>Does not know which client will contact it</td>
+            <td>Must know which server to contact, or else it won't connect!</td>
+        </tr>
+        <tr>
+            <td>Waits passively, and arbitrarily long, for contact from a client</td>
+            <td>Initiates a contact whenever communication is needed</td>
+        </tr>
+        <tr>
+            <td>Communicates with a client by sending and receiving data</td>
+            <td>Communicates with a server by sending and receiving data</td>
+        </tr>
+        <tr>
+            <td>Stays running after servicing one client, and waits for another</td>
+            <td>May terminate after interacting with a server</td>
+        </tr>
+    </table>
+    <br>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-8"><u>Topic 8: Client Software vs Server Software</u></h2>
+    <table>
+        <tr>
+            <th>Client Software</th>
+            <th>Server Software</th>
+        </tr>
+        <tr>
+            <td>Arbitrary application that becomes a client temporarily when remote access is needed</td>
+            <td>Consists of special-purpose, privileged program dedicated to providing a service</td>
+        </tr>
+        <tr>
+            <td>Is invoked directly by a user, and executes only for one session</td>
+            <td>Is invoked automatically when a system boots, and continues to execute through many sessions</td>
+        </tr>
+        <tr>
+            <td>Runs locally on a user’s computer or device</td>
+            <td>Runs on a dedicated computer system</td>
+        </tr>
+        <tr>
+            <td>Actively initiates contact with a server</td>
+            <td>Waits passively for contact from arbitrary remote clients</td>
+        </tr>
+        <tr>
+            <td>Can access multiple services as needed, but usually contacts one remote server at a time</td>
+            <td>Can accept connections from many clients at the same time, but usually offers one service</td>
+        </tr>
+        <tr>
+            <td>Does not require especially powerful hardware</td>
+            <td>Requires powerful hardware and a sophisticated operating system</td>
+        </tr>
+    </table>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-9"><u>Topic 9: Multiple Clients and Multiple Servers</u></h2>
+    <p style="font-size:16px">Any given computer can run:</p>
+    <dl style="font-size:16px">
+        <li>A single client</li>
+        <li>A single server</li>
+        <li>Multiple copies of a client that contact a given server</li>
+        <dd>
+            <li>Multiple pages each connecting to the same retailer, comparing products</li>
+        </dd>
+        <li>Multiple different clients that each contact a particular server</li>
+        <dd>
+            <li>Ex. web browser, instant message application, video teleconference</li>
+        </dd>
+        <li>Multiple servers, each for a particular service </li>
+        <dd>
+            <li>Shares the overhead of the resource </li>
+        </dd>
+        <dd>
+            <li>Demand on service may be sporadic, server sits idle</li>
+        </dd>
+    </dl>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-10"><u>Topic 10: Server Identification</u></h2>
+    <p style="font-size:16px">How does the client identify the server it needs? Well, the: </p>
+    <dl style="font-size:16px">
+        <li>Identifier that specifies the computer on which the server runs</li>
+        <dd>
+            <li>Provide an Internet Protocol (IP) address in IPv4 or IPv6 format</li>
+        </dd>
+        <dd>
+            <li>Alternatively and probably more commonly - provide a domain name which we look up in the Domain Name System (DNS)</li>
+        </dd>
+        <li>Identifier that specifies the particular service on the computer </li>
+        <dd>
+            <li>Each service is assigned to a unique 16-bit identifier known as a protocol port number (or “port”). </li>
+        </dd>
+        <dd>
+            <li>For example; an email is port 25,whiel the WWW is port 80</li>
+        </dd>
+        <dd>
+            <li>When server begins execution, it registers with its local system by specify the port it will be using </li>
+        </dd>
+        <dd>
+            <li>Can have conflict with “port already in use”</li>
+        </dd>
+    </dl>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-11"><u>Topic 11: Client and Server Steps</u></h2>
+    <table>
+        <tr>
+            <th>Client Application</th>
+            <th>Server Application</th>
+        </tr>
+        <tr>
+            <td>Starts before any of the clients</td>
+            <td>Starts after server is already running</td>
+        </tr>
+        <tr>
+            <td>Is invoked directly by a user, and executes only for one session</td>
+            <td>Obtain server name from user</td>
+        </tr>
+        <tr>
+            <td>Wait for contact from a client</td>
+            <td>Use DNS to translate name to IP address</td>
+        </tr>
+        <tr>
+            <td>Interact with client until client finishes</td>
+            <td>Specify the port N that the service uses</td>
+        </tr>
+        <tr>
+            <td>Wait for contact from next client</td>
+            <td>Contact server and interact</td>
+        </tr>
+    </table>
+
+    <h2 style="font-size:22px" class="subtopic" id="topic-2-12"><u>Topic 12: Peer-to-Peer (P2P) Architecture</u></h2>
+    <p style="font-size:16px">A bottleneck can occur if a single server provides a given service and multiple clients try to access it. Can the services be provided without creating a central bottleneck?</p>
+    <dl style="font-size:16px">
+        <li>Use file-sharing application, Peer-to-Peer (P2P) Architecture for: </li>
+        <dd>
+            <li>Each client is now also functioning as a server</li>
+        </dd>
+        <dd>
+            <li>Data is distributed (roughly) equally among N servers</li>
+        </dd>
+        <dd>
+            <li>Reduces traffic between any given server and the Internet to 1/N</li>
+        </dd>
+        <dd>
+            <li>For large N, this can considerably reduce traffic</li>
+        </dd>
+        <p>Here are some images for P2P and Client Servers</p>
+        <br>
+        <table>
+            <tr>
+                <th><img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/P2P-network.svg" alt="wikipedia.org" style="width:400px; height:243px;"> </th>
+                <th>Peer to Peer (P2P)</th>
+            </tr>
+            <tr>
+                <th><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Server-based-network.svg" alt="wikipedia.org" style="width:400px; height:243px;"> </th>
+                <th>Client Server (C-S)</th>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+        <h2 style="font-size:22px" class="subtopic" id="topic-2-13"><u>Connecting and Submitting your index.html</u></h2>
+        <p style="font-size:16px">The table below are images of the code</p>
+        <table>
+            <tr>
+                <th>
+                    <p>In order to submit your index.html,Type in your name, then you must type the follwing code into the SSH Shell Client (terminal)...</p>
+                    <img src="connecting.jpg" alt="Connecting to Website" style="width:900px;height:150px;">
+            </tr>
+            <tr>
+                <th>
+                    <p>If you want to test on how it works or use it fro your personal website, here is the code for the connected.php:</p>
+                    <img src="theconnectfileinphp.jpg" alt="Connectphp" style="width:900px;height:150px;">
+                </th>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <footer></footer>
+</body>
+
+</html>
